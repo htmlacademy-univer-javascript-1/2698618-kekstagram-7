@@ -33,7 +33,24 @@ function getNumber(value) {
   return parseInt(result, 10);
 }
 
+const parseTimeToMinutes = (time) => {
+  const timeParts = time.split(':');
+  const hours = parseInt(timeParts[0], 10);
+  const minutes = parseInt(timeParts[1], 10);
+
+  return hours * 60 + minutes;
+};
+
+const checkMeetingTime = (workStart, workEnd, meetingStart, meetingDuration) => {
+  const workStartInMinutes = parseTimeToMinutes(workStart);
+  const workEndInMinutes = parseTimeToMinutes(workEnd);
+  const meetingStartInMinutes = parseTimeToMinutes(meetingStart);
+  const meetingEndInMinutes = meetingStartInMinutes + meetingDuration;
+
+  return meetingStartInMinutes >= workStartInMinutes && meetingEndInMinutes <= workEndInMinutes;
+};
 
 checkStringLength('проверка', 10);
 isPalindrome('топот');
 getNumber('2023 год');
+checkMeetingTime('08:00', '17:30', '14:00', 90);
