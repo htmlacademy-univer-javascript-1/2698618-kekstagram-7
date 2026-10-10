@@ -33,7 +33,4 @@ function getNumber(value) {
   return parseInt(result, 10);
 }
 
-
-checkStringLength('проверка', 10);
-isPalindrome('топот');
-getNumber('2023 год');
+export {checkStringLength, isPalindrome, getNumber};
