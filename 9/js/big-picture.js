@@ -9,10 +9,14 @@ const commentsLoaderElement = bigPictureElement.querySelector('.comments-loader'
 
 const createComment = ({ avatar, name, message }) => {
   const comment = document.createElement('li');
-  comment.innerHTML =
-    `<img class="social__picture" src="${avatar}" alt="${name}" width="35" height="35">
-    <p class="social__text">${message}</p>`;
   comment.classList.add('social__comment');
+  comment.innerHTML = '<img class="social__picture" src="" alt="" width="35" height="35"><p class="social__text"></p>';
+
+  const img = comment.querySelector('.social__picture');
+  img.src = avatar;
+  img.alt = name;
+  comment.querySelector('.social__text').textContent = message;
+
   return comment;
 };
 
